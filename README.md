@@ -51,3 +51,10 @@ https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
 
 5. Run `amplify push` to deploy the Cognito backend in your AWS account.
 6. Run the app!
+
+## Useful Links
+
+- [Amplify Android Repository](https://github.com/aws-amplify/amplify-android)
+- [Amplify Android UI Repository](https://github.com/aws-amplify/amplify-ui-android/)
+- [Amplify Android Docs](https://docs.amplify.aws/lib/q/platform/android/)
+- [Authenticator Docs](https://ui.docs.amplify.aws/android/connected-components/authenticator)
