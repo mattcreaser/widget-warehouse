@@ -23,7 +23,7 @@ import com.github.mattcreaser.widgetwarehouse.Tab
 import kotlinx.coroutines.launch
 
 @Composable
-fun WidgetWarehouseApp() {
+fun WidgetWarehouseApp(signedInState: SignedInState) {
     var currentTab by remember { mutableStateOf(Tab.WidgetList) }
     val navController = rememberNavController()
 
@@ -59,7 +59,7 @@ fun WidgetWarehouseApp() {
             composable(Tab.UserProfile.route) {
                 UserProfileScreen(
                     onSignOut = {
-                        scope.launch { }
+                        scope.launch { signedInState.signOut() }
                     }
                 )
             }

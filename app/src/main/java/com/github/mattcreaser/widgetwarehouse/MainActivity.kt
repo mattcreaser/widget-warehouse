@@ -3,10 +3,13 @@ package com.github.mattcreaser.widgetwarehouse
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.amplifyframework.ui.authenticator.rememberAuthenticatorState
 import com.amplifyframework.ui.authenticator.ui.Authenticator
@@ -28,33 +31,35 @@ class MainActivity : ComponentActivity() {
 //                        text(
 //                            key = FieldKey.Custom("badgeId"),
 //                            label = "Badge Id",
-//                            required = true,
-//                            validator = {
-//                                if (content.matches(Regex("[0-9]{5}"))) {
-//                                    null
-//                                } else {
-//                                    FieldError.InvalidFormat
-//                                }
-//                            }
+//                            required = true
 //                        )
 //                        text(
 //                            key = FieldKey.Custom("position"),
 //                            label = "Position"
 //                        )
+                        phoneNumber(required = true)
                     }
                 )
 
-                Column(modifier = Modifier.fillMaxSize()) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color(0xffebebeb))
+                ) {
                     if (!authenticatorState.signedIn) {
                         WidgetWarehouseHeader()
                     }
                     Authenticator(
                         modifier = Modifier
-                            .weight(1f)
-                            .padding(top = 16.dp),
+                            .padding(16.dp)
+                            .background(
+                                color = Color(0xffffffff),
+                                shape = MaterialTheme.shapes.large
+                            )
+                            .padding(vertical = 16.dp),
                         state = authenticatorState
                     ) { signedInState ->
-                        WidgetWarehouseApp()
+                        WidgetWarehouseApp(signedInState)
                     }
                 }
             }
